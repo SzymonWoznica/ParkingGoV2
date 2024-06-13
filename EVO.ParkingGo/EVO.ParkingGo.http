@@ -1,0 +1,6 @@
+### @EVO.ParkingGo_HostAddress = http://localhost:5162
+
+### GET {{EVO.ParkingGo_HostAddress}}/weatherforecast/
+### Accept: application/json
+
+###
