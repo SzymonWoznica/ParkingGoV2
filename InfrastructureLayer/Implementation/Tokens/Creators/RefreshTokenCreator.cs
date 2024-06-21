@@ -4,17 +4,17 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using DomainLayer.Entity;
-using InfrastructureLayer.Data;
+using EVO.DomainLayer.Entity.Models.Auth;
+using EVO.InfrastructureLayer.Data.Auth;
 using InfrastructureLayer.Helper.OperationResult;
 
 namespace InfrastructureLayer.Implementation.Tokens.Creators
 {
     internal class RefreshTokenCreator
     {
-        private AppDbContext _dbContext { get; set; }
+        private AuthDbContext _dbContext { get; set; }
 
-        public RefreshTokenCreator(AppDbContext dbContext)
+        public RefreshTokenCreator(AuthDbContext dbContext)
         {
             this._dbContext = dbContext;
         }

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DomainLayer.Entity;
-using InfrastructureLayer.Data;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
+using EVO.InfrastructureLayer.Data.Auth;
+using EVO.DomainLayer.Entity.Models.Auth;
 
 namespace InfrastructureLayer.Implementation.Tokens.Creators
 {
@@ -14,8 +15,8 @@ namespace InfrastructureLayer.Implementation.Tokens.Creators
     {
         #region Fields
 
-        private AppDbContext _dbContext;
-        private IOptions<JwtSettings> _jwtSetting;
+        private AuthDbContext _dbContext;
+        private readonly IConfiguration _config;
 
         private string accessToken;
         private string refreshToken;
@@ -34,10 +35,10 @@ namespace InfrastructureLayer.Implementation.Tokens.Creators
 
         #endregion
 
-        public TokenCreator(AppDbContext dbContext, IOptions<JwtSettings> jwtSetting)
+        public TokenCreator(AuthDbContext dbContext, IConfiguration config)
         {
             this._dbContext = dbContext;
-            this._jwtSetting = jwtSetting;
+            _config = config;
         }
 
         /// <summary>
@@ -47,11 +48,11 @@ namespace InfrastructureLayer.Implementation.Tokens.Creators
         public void CreateTokens(User userInfo)
         {
 
-            JwtGenerator jwtCreator = new JwtGenerator(_jwtSetting);
+            JwtGenerator jwtCreator = new JwtGenerator(_config);
             RefreshTokenCreator refreshTokenCreator = new RefreshTokenCreator(this._dbContext);
 
             accessToken = jwtCreator.GenerateToken(userInfo);
-            refreshToken = refreshTokenCreator.CreateToken(new Guid(userInfo.Id));
+            refreshToken = refreshTokenCreator.CreateToken(new Guid(userInfo.UserId));
         }
     }
 }

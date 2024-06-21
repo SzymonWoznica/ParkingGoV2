@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVO.ParkingGo", "EVO.ParkingGo\EVO.ParkingGo.csproj", "{35B38CC9-0E88-4F34-9C1A-8BF2EA0284EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EVO.ParkingGo.Auth", "EVO.ParkingGo\EVO.ParkingGo.Auth.csproj", "{35B38CC9-0E88-4F34-9C1A-8BF2EA0284EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfrastructureLayer", "InfrastructureLayer\InfrastructureLayer.csproj", "{470BD224-0CE8-43C2-B4CC-C0A18A30F1E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EVO.InfrastructureLayer", "InfrastructureLayer\EVO.InfrastructureLayer.csproj", "{470BD224-0CE8-43C2-B4CC-C0A18A30F1E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainLayer", "DomainLayer\DomainLayer.csproj", "{49A499A3-4144-4AD3-992D-0998403F9072}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EVO.DomainLayer", "DomainLayer\EVO.DomainLayer.csproj", "{49A499A3-4144-4AD3-992D-0998403F9072}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationLayer", "ApplicationLayer\ApplicationLayer.csproj", "{785300E2-EF61-49F5-B775-6ABB0243AFFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EVO.ApplicationLayer", "ApplicationLayer\EVO.ApplicationLayer.csproj", "{785300E2-EF61-49F5-B775-6ABB0243AFFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

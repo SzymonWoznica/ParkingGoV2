@@ -1,15 +1,14 @@
+using InfrastructureLayer.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using InfrastructureLayer.Handlers.AuthHandlers;
-using EVO.InfrastructureLayer.Data.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddDbContext<AuthDbContext>(
+builder.Services.AddDbContext<AppDbContext>(
     o => o.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")
     )
@@ -19,11 +18,6 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(AuthLoginHandler).Assembly));
-
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
 //JWT Authentication

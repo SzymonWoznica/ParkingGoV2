@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DomainLayer.Entity
+namespace EVO.DomainLayer.Entity.Models.Auth
 {
     [Table("RefreshToken")]
 
     public class RefreshToken_
     {
-        [Key]
+        public int RecordId { get; set; }
         public Guid UserId { get; set; }
         public string TokenId { get; set; }
         public string RefreshToken { get; set; }

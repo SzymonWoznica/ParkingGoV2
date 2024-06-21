@@ -2,27 +2,25 @@
 using ApplicationLayer.DTOs.Auth;
 using ApplicationLayer.DTOs.Auth.Login;
 using AutoMapper;
-using DomainLayer.Entity;
-using DomainLayer.JWT;
-using InfrastructureLayer.Data;
+using EVO.InfrastructureLayer.Data.Auth;
 using InfrastructureLayer.Implementation.Tokens.Creators;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 
 namespace InfrastructureLayer.Handlers.AuthHandlers
 {
     public class AuthLoginHandler : IRequestHandler<AuthLoginCommand, LoginResponseDto>
     {
         private readonly IMapper _mapper;
-        private readonly AppDbContext _appDbContext;
-        private readonly IOptions<JwtSettings> _jwtSettings;
+        private readonly AuthDbContext _appDbContext;
+        private readonly IConfiguration _config;
 
-        public AuthLoginHandler(IMapper mapper, AppDbContext appDbContext, IOptions<JwtSettings> jwtSettings)
+        public AuthLoginHandler(IMapper mapper, AuthDbContext appDbContext, IConfiguration config)
         {
             _mapper = mapper;
             _appDbContext = appDbContext;
-            _jwtSettings = jwtSettings;
+            _config = config;
         }
         public async Task<LoginResponseDto> Handle(AuthLoginCommand request, CancellationToken cancellationToken)
         {
@@ -35,7 +33,7 @@ namespace InfrastructureLayer.Handlers.AuthHandlers
             if (isExist.Result == null)
                 return setLoginResponse(null);
 
-            TokenCreator tokenCreator = new TokenCreator(_appDbContext, _jwtSettings);
+            TokenCreator tokenCreator = new TokenCreator(_appDbContext, _config);
             tokenCreator.CreateTokens(isExist.Result);
 
             // Correct logged
