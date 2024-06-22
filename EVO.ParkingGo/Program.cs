@@ -2,8 +2,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using ApplicationLayer.Contracts.Auth;
+using EVO.DomainLayer.Entity.Models.Auth;
 using InfrastructureLayer.Handlers.AuthHandlers;
 using EVO.InfrastructureLayer.Data.Auth;
+using EVO.InfrastructureLayer.Repositories;
+using EVO.InfrastructureLayer.Validators.Auth;
+using FluentValidation;
+using ApplicationLayer.CQRS.Commands.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +32,9 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(AuthL
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IValidator<AuthLoginCommand>, LoginValidator>();
+
 //JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
     options.TokenValidationParameters = new TokenValidationParameters
@@ -41,6 +50,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 });
 
 var app = builder.Build();
+
 
 
 // Configure the HTTP request pipeline.

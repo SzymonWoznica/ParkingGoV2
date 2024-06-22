@@ -22,7 +22,7 @@ namespace EVO.ParkingGo.Controllers.Auth
         {
             var  result = await _mediator.Send(new AuthLoginCommand() { AuthLoginRequest = loginRequest});
 
-            if(result.Flag)
+            if(result.IsSuccessful)
                 return Ok(result);
 
             return BadRequest(result);

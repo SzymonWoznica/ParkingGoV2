@@ -10,7 +10,7 @@ namespace EVO.InfrastructureLayer.Data.Auth
         {
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<User?> Users { get; set; }
         public DbSet<RefreshToken_> RefreshToken { get; set; }
 
 
