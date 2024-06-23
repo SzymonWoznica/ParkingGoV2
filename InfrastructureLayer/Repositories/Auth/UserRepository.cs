@@ -22,7 +22,7 @@ namespace EVO.InfrastructureLayer.Repositories.Auth
                 && u.Password == loginRequest.Password);
         }
 
-        public async Task<User?> GetUserByIdAsync(LoginRequestDto loginRequestDto)
+        public async Task<User?> GetUserByLoginRequestAsync(LoginRequestDto loginRequestDto)
         {
             return await _appDbContext.Users.FirstOrDefaultAsync(user =>
                 user != null

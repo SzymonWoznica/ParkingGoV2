@@ -6,6 +6,6 @@ namespace ApplicationLayer.Contracts.Auth
     public interface IUserRepository
     {
         bool IsUserExist(LoginRequestDto loginRequest);
-        Task<User?> GetUserByIdAsync(LoginRequestDto loginRequestDto);
+        Task<User?> GetUserByLoginRequestAsync(LoginRequestDto loginRequestDto);
     }
 }
