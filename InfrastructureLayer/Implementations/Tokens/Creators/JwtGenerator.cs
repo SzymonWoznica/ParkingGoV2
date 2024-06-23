@@ -1,15 +1,9 @@
-﻿using DomainLayer.JWT;
+﻿using EVO.DomainLayer.Entity.Models.Auth;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Configuration;
-using EVO.DomainLayer.Entity.Models.Auth;
 
 namespace InfrastructureLayer.Implementation.Tokens.Creators
 {

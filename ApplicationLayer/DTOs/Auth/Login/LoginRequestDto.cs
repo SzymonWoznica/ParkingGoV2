@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
-
-namespace ApplicationLayer.DTOs.Auth.Login
+﻿namespace ApplicationLayer.DTOs.Auth.Login
 {
     public class LoginRequestDto
     {

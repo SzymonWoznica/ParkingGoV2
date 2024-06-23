@@ -1,5 +1,4 @@
-﻿using ApplicationLayer.Contracts.Auth;
-using ApplicationLayer.CQRS.Commands.Auth;
+﻿using ApplicationLayer.CQRS.Commands.Auth;
 using ApplicationLayer.DTOs.Auth.Login;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

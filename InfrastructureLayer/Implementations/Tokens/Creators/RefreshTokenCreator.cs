@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using EVO.DomainLayer.Entity.Models.Auth;
+﻿using EVO.DomainLayer.Entity.Models.Auth;
 using EVO.InfrastructureLayer.Data.Auth;
 using InfrastructureLayer.Helper.OperationResult;
+using System.Security.Cryptography;
 
 namespace InfrastructureLayer.Implementation.Tokens.Creators
 {
