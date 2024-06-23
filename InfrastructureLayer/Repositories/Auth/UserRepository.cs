@@ -4,7 +4,7 @@ using EVO.DomainLayer.Entity.Models.Auth;
 using EVO.InfrastructureLayer.Data.Auth;
 using Microsoft.EntityFrameworkCore;
 
-namespace EVO.InfrastructureLayer.Repositories
+namespace EVO.InfrastructureLayer.Repositories.Auth
 {
     public class UserRepository : IUserRepository
     {

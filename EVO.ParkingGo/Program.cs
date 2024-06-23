@@ -1,16 +1,15 @@
+using ApplicationLayer.Contracts.Auth;
+using ApplicationLayer.CQRS.Commands.Auth;
+using EVO.InfrastructureLayer.Data.Auth;
+using EVO.InfrastructureLayer.Repositories.Auth;
+using EVO.InfrastructureLayer.Validators.Auth;
+using FluentValidation;
+using InfrastructureLayer.Handlers.AuthHandlers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using ApplicationLayer.Contracts.Auth;
-using EVO.DomainLayer.Entity.Models.Auth;
-using InfrastructureLayer.Handlers.AuthHandlers;
-using EVO.InfrastructureLayer.Data.Auth;
 using Microsoft.OpenApi.Models;
-using EVO.InfrastructureLayer.Repositories;
-using EVO.InfrastructureLayer.Validators.Auth;
-using FluentValidation;
-using ApplicationLayer.CQRS.Commands.Auth;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EVO.DomainLayer", "DomainLa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EVO.ApplicationLayer", "ApplicationLayer\EVO.ApplicationLayer.csproj", "{785300E2-EF61-49F5-B775-6ABB0243AFFE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6249CC88-2DB1-4138-B8BD-4BCBF6A9B9E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVO.ParkingGo.Auth.TestsAPI", "EVO.ParkingGo.Auth.TestsAPI\EVO.ParkingGo.Auth.TestsAPI.csproj", "{AF4C4A43-5175-40FC-9A5A-80AF6D652D16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +37,16 @@ Global
 		{785300E2-EF61-49F5-B775-6ABB0243AFFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{785300E2-EF61-49F5-B775-6ABB0243AFFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{785300E2-EF61-49F5-B775-6ABB0243AFFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF4C4A43-5175-40FC-9A5A-80AF6D652D16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF4C4A43-5175-40FC-9A5A-80AF6D652D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF4C4A43-5175-40FC-9A5A-80AF6D652D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF4C4A43-5175-40FC-9A5A-80AF6D652D16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AF4C4A43-5175-40FC-9A5A-80AF6D652D16} = {6249CC88-2DB1-4138-B8BD-4BCBF6A9B9E6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E0A8D0E-17F7-4946-B9F7-AFA091D56EE3}
