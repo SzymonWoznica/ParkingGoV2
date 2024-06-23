@@ -2,10 +2,10 @@
 {
     public class LoginResponseDto
     {
-        public string AccessToken { get; set; }
-        public string RefreshToken { get; set; }
-        public EnumRoleUser Role { get; set; }
-        public bool Flag { get; set; }
-        public string Message { get; set; }
+        public string AccessToken { get; set; } = string.Empty;
+        public string RefreshToken { get; set; } = string.Empty;
+        public EnumRoleUser Role { get; set; } = EnumRoleUser.None;
+        public bool IsSuccessful { get; set; } = false;
+        public List<string> Message { get; set; } = new List<string>();
     }
 }

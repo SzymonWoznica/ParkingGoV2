@@ -45,7 +45,7 @@ namespace InfrastructureLayer.Implementation.Tokens.Creators
         /// Create and save in database Refresh Token and generate Access Token
         /// </summary>
         /// <returns></returns>
-        public void CreateTokens(User userInfo)
+        public void CreateTokens(User? userInfo)
         {
 
             JwtGenerator jwtCreator = new JwtGenerator(_config);

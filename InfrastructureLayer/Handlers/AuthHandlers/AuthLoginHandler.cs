@@ -1,8 +1,10 @@
-﻿using ApplicationLayer.CQRS.Commands.Auth;
-using ApplicationLayer.DTOs.Auth;
+﻿using ApplicationLayer.Contracts.Auth;
+using ApplicationLayer.CQRS.Commands.Auth;
 using ApplicationLayer.DTOs.Auth.Login;
 using AutoMapper;
+using EVO.DomainLayer.Entity.Models.Auth;
 using EVO.InfrastructureLayer.Data.Auth;
+using FluentValidation;
 using InfrastructureLayer.Implementation.Tokens.Creators;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -15,46 +17,50 @@ namespace InfrastructureLayer.Handlers.AuthHandlers
         private readonly IMapper _mapper;
         private readonly AuthDbContext _appDbContext;
         private readonly IConfiguration _config;
+        private readonly IValidator<AuthLoginCommand> _validator;
+        private readonly IUserRepository _userRepository;
 
-        public AuthLoginHandler(IMapper mapper, AuthDbContext appDbContext, IConfiguration config)
+        public AuthLoginHandler(
+            IMapper mapper, 
+            AuthDbContext appDbContext, 
+            IConfiguration config, 
+            IValidator<AuthLoginCommand> validator,
+            IUserRepository userRepository)
         {
             _mapper = mapper;
             _appDbContext = appDbContext;
             _config = config;
+            _validator = validator;
+            _userRepository = userRepository;
         }
+
         public async Task<LoginResponseDto> Handle(AuthLoginCommand request, CancellationToken cancellationToken)
         {
+            //var validationResult = await _validator.ValidateAsync(request, cancellationToken);
 
-            var isExist = _appDbContext.Users.FirstOrDefaultAsync(x =>
-                x.EmailAddress == request.AuthLoginRequest.EmailAddress
-                && x.Password == request.AuthLoginRequest.Password);
+            var result = new LoginResponseDto();
 
-            // Wrong login or password
-            if (isExist.Result == null)
-                return setLoginResponse(null);
-
-            TokenCreator tokenCreator = new TokenCreator(_appDbContext, _config);
-            tokenCreator.CreateTokens(isExist.Result);
-
-            // Correct logged
-            return setLoginResponse(tokenCreator);
-        }
-
-        #region Private methods
-
-        private LoginResponseDto setLoginResponse(TokenCreator? generatedToken)
-        {
-            return new LoginResponseDto()
+            //if (validationResult.IsValid)
+            if(true)
             {
-                RefreshToken = generatedToken == null ? String.Empty : generatedToken.RefreshToken,
-                AccessToken = generatedToken == null ? String.Empty : generatedToken.AccessToken,
-                Flag = generatedToken != null,
-                Message = generatedToken == null ? "Login or password is incorrect" :"Successfully logged.",
-                Role = EnumRoleUser.User
-            };
+                TokenCreator tokenCreator = new TokenCreator(_appDbContext, _config);
+                var userInfo = _userRepository.GetUserByIdAsync(request.AuthLoginRequest);
+                tokenCreator.CreateTokens(await userInfo);
+
+                result.AccessToken = tokenCreator.AccessToken;
+                result.RefreshToken = tokenCreator.RefreshToken;
+                result.IsSuccessful = true;
+            }
+
+            else
+            {
+                //result.Message = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+            }
+
+            return result;
         }
 
-        #endregion
+
 
     }
 }

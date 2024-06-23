@@ -25,7 +25,7 @@ namespace InfrastructureLayer.Implementation.Tokens.Creators
             _config = config;
         }
 
-        public string GenerateToken(User user)
+        public string GenerateToken(User? user)
         {
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
